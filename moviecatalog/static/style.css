@@ -19,14 +19,28 @@ h2 {
 }
 
 li {
-  display: inline;
+  float: left;
+  border-right: 1px solid black:
+}
+
+li a{
+  display: block;
+  color: whitesmoke;
   text-align: center;
-  padding: 14px 30px;
+  padding: 20px 30px;
+  text-decoration: none;
+}
+
+li a:hover:not(.current-page) {
+  background-color: #313136;
+  border-radius: 10%;
 }
 
 ul {
-  padding: 0;
-  margin: 0;
+  padding: 10px;
+  margin: 10px;
+  list-style-type: none;
+  overflow: hidden;
 }
 
 p {
@@ -35,6 +49,7 @@ p {
 
 hr.topdivider {
   border-top: 3px solid black;
+  margin: 5px;
 }
 
 .logo-img {
@@ -64,7 +79,12 @@ hr.topdivider {
 }
 
 .textshadow {
-    text-shadow: 1px 1px 2px black;
+  text-shadow: 1px 1px 1px black;
+}
+
+.current-page {
+  background-color: #8B8BAE;
+  border-radius: 10%;
 }
 
 .logo-and-title {
