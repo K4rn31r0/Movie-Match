@@ -153,3 +153,15 @@ hr.topdivider {
   height: auto;
   border-radius: 10%;
 }
+
+.about-us {
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-us h2 {
+  margin-top: 0;
+  padding: 10px 10px;
+}
