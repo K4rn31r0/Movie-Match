@@ -4,8 +4,8 @@ html {
 }
 
 body {
-  background-color:#8B8BAE;
-  color: #8B8BAE;
+  background-color: #68588d;
+  color: #7C7C9B;
 }
 
 h1 {
@@ -25,7 +25,7 @@ li {
 
 li a{
   display: block;
-  color: whitesmoke;
+  color: #68588d;
   text-align: center;
   padding: 20px 30px;
   text-decoration: none;
@@ -73,9 +73,8 @@ hr.topdivider {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  -->background: rgb(23, 8, 250);
-  background: linear-gradient(0deg, rgba(23, 8, 250, 1) 0%, rgba(14, 197, 250, 1) 50%, rgba(59, 219, 251, 1) 100%);
-  background: #E78F8E;
+  background: #E2CFEA;
+  color: #6247AA;
 }
 
 .textshadow {
@@ -113,9 +112,7 @@ hr.topdivider {
 
 .mainbody {
   font-family: 'Mooli', sans-serif;
-  background: rgb(242, 252, 255);
-  /* background: linear-gradient(0deg, rgba(242, 252, 255, 1) 0%, rgba(0, 218, 223, 0.4429972672662815) 100%); */
-  background: #ECE2D0;
+  background: #F2F2F0;
 }
 
 .second-section {
