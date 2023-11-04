@@ -125,9 +125,14 @@ hr.topdivider {
   border-top: 1px dotted black;
 }
 
-.left-text {
-  width: 300px;
-  padding: 30px;
+.second-section-title {
+  text-align: center;
+}
+
+.second-section-subtitle{
+  text-align: center;
+  max-width: 800px;
+  margin: 0px auto;
 }
 
 .moviegallery {
@@ -147,7 +152,7 @@ hr.topdivider {
 .moviegallery img {
   padding: 15px;
   width: 300px;
-  height: auto;
+  height: 450px;
   border-radius: 10%;
 }
 
