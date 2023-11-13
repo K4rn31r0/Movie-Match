@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
     path('sobre-nos/', views.about_us),
+    path('quiz-genero-fav/', views.quiz),
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

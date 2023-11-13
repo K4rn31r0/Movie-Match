@@ -1,0 +1,14 @@
+<h1>Thunder!</h1>
+
+<h2><b>Listando:</b></h2>
+
+{% for mov in thelist %}
+<p>Nome: {{mov.title}}</p>
+<p>Ano: {{ mov.year }}</p>
+<p>Diretor(a): {{ mov.director }}</p>
+<p>Gênero: {{ mov.genre }}</p>
+{% if mov.subgenre %}
+<p>Subgênero: {{ mov.subgenre }}</p>
+{% endif %}
+<br>
+{% endfor %}
