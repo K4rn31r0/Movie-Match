@@ -23,5 +23,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
     path('sobre-nos/', views.about_us),
+    path('profile/', views.profile),
+    path('series/', views.series),
+    path('movies/', views.movies),
     path('quiz-genero-fav/', views.quiz),
+    path('users/login/', views.login_user, name="login"),
+    path('users/logout/', views.logout_user, name="logout"),
+    path('users', views.create_user),
+  
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

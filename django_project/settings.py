@@ -133,3 +133,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # SUPERUSER: admin / SENHA: moviematch
+LOGIN_URL = '/users/login/'

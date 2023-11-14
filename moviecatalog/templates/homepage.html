@@ -16,7 +16,10 @@
 </head>
 
 <body>
-
+  {% if request.user.is_authenticated %}
+    <b>Bem-vindo, {{request.user.username}}</b> <br> 
+    <a href="/users/logout">Sair</a>
+  {% endif %}
   <!-- BARRA DE NAVEGAÇÃO -->
   
   <div class="navbar">
@@ -32,9 +35,9 @@
         <!-- TEMPORARIO! -->
         
         <li><a href="" class="current-page">Home</a></li>
-        <li><a>Filmes</a></li>
-        <li><a>Séries</a></li>
-        <li><a>Meu Perfil</a></li>
+        <li><a href="movies">Filmes</a></li>
+        <li><a href="series">Séries</a></li>
+        <li><a href="profile">Meu Perfil</a></li>
         <li><a href="sobre-nos">Sobre Nós</a></li>
       </ul>
     </div>

@@ -87,9 +87,10 @@ def avaliaFilme (listaFilmes):
     while n < 7:
         i = r.randint(0, len(listaFilmes)-1)
         filme = listaFilmes[i]
-        notaUser = int(input('Qual sua nota para o filme {}?\n Escala: \n0 - Nunca vi este filme \n1 - Muito Ruim \n2 - Ruim \n3 - Mais ou menos \n4 - Bom \n5 - Muito bom\n6 - Excelente\nNota: '
-                              .format(filme.getTitulo())))
-        genero = filme.getGenero()
+        #notaUser = int(input('Qual sua nota para o filme {}?\n Escala: \n0 - Nunca vi este filme \n1 - Muito Ruim \n2 - Ruim \n3 - Mais ou menos \n4 - Bom \n5 - Muito bom\n6 - Excelente\nNota: ' .format(filme.getTitulo())))
+        notaUser = int(input('Qual sua nota para o filme {}?\n Escala: \n0 - Nunca vi este filme \n1 - Muito Ruim \n2 - Ruim \n3 - Mais ou menos \n4 - Bom \n5 - Muito bom\n6 - Excelente\nNota: ' .format(filme.title)))
+        #genero = filme.getGenero()
+        genero = filme.genre
         notaAtt = dicNotaUser.get(genero, None)
         if notaUser != 0:
             if notaAtt == None:
