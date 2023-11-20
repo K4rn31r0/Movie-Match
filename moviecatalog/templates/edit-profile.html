@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>MovieMatch - Perfil</title>
+  <title>MovieMatch - Editar Perfil</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,12 +51,19 @@
       </style>
 
       <div class="profile_pic"></div>
-      
-      <h4 style=text-align:left;>
-          <a href="edit-profile">Editar perfil</a>
-        @{{request.user.username}}
-        </h4>
 
+      <div id="signup-form">
+        <h4 style=text-align:left;>
+          <a href="profile">Voltar</a>
+        Editando perfil de @{{request.user.username}}
+        </h4>
+        <form>
+            <input type="text" id="signup-username" placeholder="Novo Usuário">
+            <input type="password" id="signup-password" placeholder="Nova Senha">
+            <button type="button" onclick="signup()">Editar</button>
+        </form>
+      </div>
+      
       <table style=text-align:center;>
         <tr>
           <th>Seguindo</th>
@@ -70,20 +77,4 @@
         </tr>
       </table>
 
-    <h4>
-      Filmes que {{request.user.username}} gostou
-    </h4>
-<!--->
-      <div class="moviegallery">
-  
-        {% for movie in Filmes %}
-        <div>
-          <img src="{{ movie.poster.url }}">
-          <h3>{{ movie.name }}</h3>
-          <p><b>Estreia: </b>{{ movie.releaseDate }}</p>
-          <p><b>Diretor: </b>{{ movie.director }}</p>
-          <p><b>Gênero: </b>{{ movie.genre }}</p>
-        </div>
-        {% endfor %}
-      </div>
-<!--->
+

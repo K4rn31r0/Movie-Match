@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>MovieMatch - Editar Perfil</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mooli&family=Sail&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static '/style.css' %}">
+</head>
+
+<body>
+
+  <!-- BARRA DE NAVEGAÇÃO -->
+
+  <div class="navbar">
+    <div class="logo-and-title">
+      <img src="{% static '/images/Logo.png' %}" class="logo-img">
+      <h1 class="Titulo-logo"><i>MovieMatch</i></h1>
+    </div>
+    <div class="textshadow">
+      <ul>
+        <li><a href="users/login">Login</a></li>
+        <li><a href="users/register">Sign up</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="topdivider">
+   <!-- CORPO PRINCIPAL -->
+  <div class="mainbody">
+  
+  <div id="login-form">
+    <h2>Login</h2>
+    <form>
+        <input type="text" id="login-username" placeholder="Usuário">
+        <input type="password" id="login-password" placeholder="Senha">
+        <button type="button" onclick="login()">Entrar</button>
+    </form>
+  </div>
+  <div id="signup-form">
+    <h2>Sign Up</h2>
+    <form>
+        <input type="text" id="signup-username" placeholder="Novo Usuário">
+        <input type="password" id="signup-password" placeholder="Nova Senha">
+        <button type="button" onclick="signup()">Registrar</button>
+    </form>
+  </div>
+  </section>
+  </div>
+  <footer>
+  <p>© 2023 Sua Empresa. Todos os direitos reservados.</p>
+  </footer>
+  
+</body>
+</html>
+
+

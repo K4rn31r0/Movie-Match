@@ -1,14 +1,7 @@
-<h1>Thunder!</h1>
-
-<h2><b>Listando:</b></h2>
-
-{% for mov in thelist %}
-<p>Nome: {{mov.title}}</p>
-<p>Ano: {{ mov.year }}</p>
-<p>Diretor(a): {{ mov.director }}</p>
-<p>Gênero: {{ mov.genre }}</p>
-{% if mov.subgenre %}
-<p>Subgênero: {{ mov.subgenre }}</p>
-{% endif %}
-<br>
-{% endfor %}
+<form method="post">
+  {% csrf_token %}
+  <label>Qual a sua nota para o filme {{ nomeFilme }} ? </label>
+  <input type="number" name="nota" min=0 max=6 value=0>
+  <input type="hidden" name="index" value="{{ valorIndice }}">
+  <input type="submit" value="OK!">
+</form>

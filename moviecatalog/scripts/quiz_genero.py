@@ -81,30 +81,23 @@ listaFilmes = [
     Filme21, Filme22, Filme23, Filme24, Filme25
     ]
 
-def avaliaFilme (listaFilmes):
-    dicNotaUser = {}
-    n = 0
-    while n < 7:
-        i = r.randint(0, len(listaFilmes)-1)
-        filme = listaFilmes[i]
-        #notaUser = int(input('Qual sua nota para o filme {}?\n Escala: \n0 - Nunca vi este filme \n1 - Muito Ruim \n2 - Ruim \n3 - Mais ou menos \n4 - Bom \n5 - Muito bom\n6 - Excelente\nNota: ' .format(filme.getTitulo())))
-        notaUser = int(input('Qual sua nota para o filme {}?\n Escala: \n0 - Nunca vi este filme \n1 - Muito Ruim \n2 - Ruim \n3 - Mais ou menos \n4 - Bom \n5 - Muito bom\n6 - Excelente\nNota: ' .format(filme.title)))
-        #genero = filme.getGenero()
-        genero = filme.genre
-        notaAtt = dicNotaUser.get(genero, None)
-        if notaUser != 0:
-            if notaAtt == None:
-                dicNotaUser[genero] = notaUser
-            else:
-                dicNotaUser[genero] = (notaUser + notaAtt)/2
-        listaFilmes.remove(listaFilmes[i])
-        n += 1
-    return dicNotaUser
+
+def avaliaFilme (listaFilmes, notaUser, dicNotaUser, i):
+  filme = listaFilmes[i]
+  genero = filme['genre']
+  notaAtt = dicNotaUser.get(genero, None)
+  if notaUser != 0:
+      if notaAtt == None:
+          dicNotaUser[genero] = notaUser
+      else:
+          dicNotaUser[genero] = (notaUser + notaAtt)/2
+  listaFilmes.remove(listaFilmes[i])
+  return dicNotaUser
         
 def detGenFav (dicNotaUser):
     return max(dicNotaUser, key=dicNotaUser.get)
 
-def detifAmigo (dicNotaUser, dicNotaUser2):
+def detIfAmigo (dicNotaUser, dicNotaUser2):
     gen_fav = detGenFav(dicNotaUser)
     gen_fav2 = detGenFav(dicNotaUser2)
     if gen_fav == gen_fav2: #its a match
