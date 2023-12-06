@@ -31,7 +31,7 @@
       <ul>
         
         <!-- ELEMENTO <a> QUE APONTA PARA O QUIZ DE GENERO FAV. -->
-        <li><a href="quiz-genero-fav">_QUIZ_</a></li>
+        <li><a href="quiz-genero-fav">QUIZ</a></li>
         <!-- TEMPORARIO! -->
         
         <li><a href="" class="current-page">Home</a></li>
@@ -48,17 +48,15 @@
   
   <div class="mainbody">
     <div class="first-section">
-      <img src="{% static '/images/placeholder.png' %}">
+      <img src="https://png.pngtree.com/png-clipart/20221123/ourmid/pngtree-line-drawing-cinema-audience-watching-movie-png-image_6167652.png">
       <div class="middletext">
         <h2>Conecte-se pelo seu gosto por cinema!</h2>
         <p>
           Você quer assistir algo, mas não sabe o que assistir? Ou tem, mas não gosta de assistir algo novo sozinho? O site <i>MovieMatch</i> te proporciona a oportunidade de se conectar com pessoas com gostos de filmes parecidos com o seu! Ao fazer nosso teste de personalidade, nosso algoritmo consegue conhecer seus gostos, filmes favoritos, e te recomendar filmes que podem virar seu novo filme favorito. É só se inscrever!
           </p>
       </div>
-      <img src="{% static '/images/placeholder.png' %}">
     </div>
     <hr>
-
     <!-- AQUI COMEÇA A SEGUNDA SEÇÃO -->
     
     <div>
@@ -79,7 +77,6 @@
         <div>
           <img src="{{ movie.poster.url }}">
           <h3>{{ movie.name }}</h3>
-          <p><b>Estreia: </b>{{ movie.releaseDate }}</p>
           <p><b>Diretor: </b>{{ movie.director }}</p>
           <p><b>Gênero: </b>{{ movie.genre }}</p>
         </div>

@@ -97,30 +97,38 @@ def avaliaFilme (listaFilmes, notaUser, dicNotaUser, i):
 def detGenFav (dicNotaUser):
     return max(dicNotaUser, key=dicNotaUser.get)
 
-def detIfAmigo (dicNotaUser, dicNotaUser2):
-    gen_fav = detGenFav(dicNotaUser)
-    gen_fav2 = detGenFav(dicNotaUser2)
-    if gen_fav == gen_fav2: #its a match
-        pct = detPctSemelhanca(dicNotaUser, dicNotaUser2)
-        return pct
+#algoritmo amigos
+
+def detIfAmigo (QuizResults, Amigo):
+  if QuizResults.permaFavGenre == Amigo.generofav:
+        #pct = detPctSemelhanca(dicNotaUser, dicNotaUser2)
+        return 'match'
     #not a match
-    return
-    
+  return
+
+def detFilme (QuizResults, Movie):
+  if QuizResults.permaFavGenre == Movie.genre:
+      #pct = detPctSemelhanca(dicNotaUser, dicNotaUser2)
+      return 'match'
+  #not a match
+  return
+'''
 def detPctSemelhanca (dicNotaUser, dicNotaUser2):
     n = 0
     l_pct = []
     while n < len(dicNotaUser):
-        gen_fav = detGenFav(dicNotaUser)
-        nota_genfav = dicNotaUser2.get(gen_fav, None)
-        if nota_genfav != None:
-            l_pct += [nota_genfav,(len(dicNotaUser)-n)]
-        n += 1
+      gen_fav = dicNotaUser.generofav
+      nota_genfav = dicNotaUser2.generofav
+      l_pct += [nota_genfav,(len(dicNotaUser)-n)]
+      dicNotaUser.pop(gen_fav)  
+      n += 1
     soma = 0
     peso = 0
-    for lNota in enumerate(l_pct):
-        soma += lNota[0] * lNota[1]
-        peso += lNota[1]
+    for nota,peso in enumerate(l_pct):
+        soma += nota * peso
+        peso += peso
     media = soma/peso
     return media
+'''
 
 

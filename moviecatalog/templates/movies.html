@@ -26,7 +26,7 @@
     </div>
     <div class="textshadow">
       <ul>
-        <li><a href="/">Home</a></li>
+        <li><a href="/home">Home</a></li>
         <li><a href="" class="current-page">Filmes</a></li>
         <li><a href="amigos">Amigos</a></li>
         <li><a href="profile">Meu Perfil</a></li>
@@ -34,11 +34,59 @@
       </ul>
     </div>
   </div>
+
   <hr class="topdivider">
 
   <div class="mainbody">
-    <div style="display: flex; flex-direction:column ;margin:0px 201px 0px 201px;text-align:justify" class="about-us">
+    <div style="display: flex; flex-direction:column ;margin:0px 201px 0px 201px; class="about-us">
       <h2><b>Filmes</b></h2>
-      <h3>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices ex purus, eget accumsan odio mollis non. Suspendisse suscipit imperdiet dui, eu pharetra ligula aliquam eu. Mauris suscipit magna sit amet mi porta consequat. Mauris euismod odio quam, in facilisis ante elementum non. Cras urna enim, hendrerit et cursus vel, condimentum quis odio. Donec euismod purus non massa rutrum, in imperdiet est porta. Etiam vitae dignissim velit. Maecenas interdum iaculis neque, eget pellentesque arcu vestibulum ac. Fusce nec pellentesque mauris, in feugiat arcu. Pellentesque sodales in orci eu sodales. Duis accumsan velit nibh, in bibendum est malesuada at. Curabitur placerat sem quis lectus egestas vulputate. Sed bibendum, felis at auctor tincidunt, ante massa feugiat magna, pellentesque lacinia nisi ex non metus.
+      <h3 style=color:black>
+        Principais recomendações de filmes para @{{request.user.username}}
       </h3>
+        <div class="moviegallery" style=align-items:center>
+        {% for movie in Filmes %}
+        <div>
+          {% if movie.poster %}
+          <div>
+            <h4 style=text-align:center>{{ movie.title }}</h4>
+          </div>
+          <img src="{{movie.poster.url}}">
+          <p><b>Diretor: </b>{{ movie.director }}</p>
+          <p><b>Gênero: </b>{{ movie.genre }}</p>
+          {% else %}
+          <h5>{{ movie.id }}</h5>
+          {% endif %}
+        </div>
+        {% endfor %}
+         
+        </div>
+      </div>
+      
+      <hr>
+
+  <div style="display: flex; flex-direction:column ;margin:0px 201px 0px 201px; class="about-us">
+    <div>
+        <h3 style=color:black>
+          Recomendações de filmes de {{ UserFav }} para @{{request.user.username}}
+        </h3>
+    </div>
+            <div class="moviegallery">
+            {% for movie in Filmes2 %}
+            <div>
+              {% if movie.poster %}
+              <div>
+                <h4 style=text-align:center>{{ movie.title }}</h4>
+              </div>
+              <img src="{{movie.poster.url}}">
+              <p><b>Diretor: </b>{{ movie.director }}</p>
+              <p><b>Gênero: </b>{{ movie.genre }}</p>
+              {% else %}
+              <h5>{{ movie.id }}</h5>
+              {% endif %}
+            </div>
+            {% endfor %}
+
+            </div>
+          </div>
+        </div>
+  </div>

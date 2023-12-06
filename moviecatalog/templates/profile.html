@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Sail&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{% static '/style.css' %}">
+  <link rel="stylesheet" href="{% static '/profile.css' %}">
 </head>
 
 <body>
@@ -41,22 +42,19 @@
   <div class="mainbody">
     <div style="display: flex; flex-direction:column ;margin:0px 201px 0px 201px">
 
-      <style>
-          .profile_pic {
-              width: 100px;
-              height: 100px;
-              background-color: #E2CFEA;
-              border-radius: 50%;
-          }
-      </style>
-
-      <div class="profile_pic"></div>
+      <div class="profile-pic">
+        <img src= "{% static '/images/placeholder.png' %}" style="border-radius:50%">
+      </div>
       
-      <h4 style=text-align:left;>
-          <a href="edit-profile">Editar perfil</a>
-        @{{request.user.username}}
+      <div>
+        <h4 style="color: #6247aa; font-weight: bold;
+          margin-bottom:0px">
+          @{{request.user.username}}
         </h4>
-
+      </div>
+    
+        <p contenteditable="true">Clique para inserir uma biografia </p>
+      
       <table style=text-align:center;>
         <tr>
           <th>Seguindo</th>
@@ -66,24 +64,28 @@
         <tr>
           <td>1</td>
           <td>2</td>
-          <td>Terror</td>
+          <td>{{ GeneroFav }}</td>
         </tr>
       </table>
 
-    <h4>
+      <h4>
+        <a href="/users/logout">Sair</a>
+      </h4>
+
+    <h4 style=color:black>
       Filmes que {{request.user.username}} gostou
     </h4>
-<!--->
+
       <div class="moviegallery">
-  
-        {% for movie in Filmes %}
-        <div>
-          <img src="{{ movie.poster.url }}">
-          <h3>{{ movie.name }}</h3>
-          <p><b>Estreia: </b>{{ movie.releaseDate }}</p>
-          <p><b>Diretor: </b>{{ movie.director }}</p>
-          <p><b>Gênero: </b>{{ movie.genre }}</p>
-        </div>
-        {% endfor %}
+
+      {% for movie in Filmes %}
+      <div>
+        <img src="{{ movie.poster.url }}">
+        <h3>{{ movie.name }}</h3>
+        <p><b>Estreia: </b>{{ movie.releaseDate }}</p>
+        <p><b>Diretor: </b>{{ movie.director }}</p>
+        <p><b>Gênero: </b>{{ movie.genre }}</p>
       </div>
-<!--->
+      {% endfor %}
+      </div>
+    </div>

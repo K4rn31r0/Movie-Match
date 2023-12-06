@@ -1,21 +1,23 @@
-from django.shortcuts import render
-from .models import Movie, QuizMovie, QuizResults
-from .scripts.quiz_genero import avaliaFilme, detGenFav
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Movie, QuizMovie, QuizResults, Amigos, UserProfile
+from .scripts.quiz_genero import avaliaFilme, detGenFav, detIfAmigo, detFilme
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
 import random as r
 
 
 def landing_page(request):
+  movies = QuizMovie.objects.all()
+  for obj in movies:
+    print(obj.title, ' - ' ,obj.genre)
   return render(request, "landingpage.html")
   
 @login_required
 def home(request):
-  movieList = Movie.objects.all()
-  return render(request, "homepage.html", context={"Filmes":movieList})
+  movieList = QuizMovie.objects.filter(year='2023').all()
+  random = movieList.order_by('?')[:6]
+  return render(request, "homepage.html", context={"Filmes":random})
   
 @login_required
 def about_us(request):
@@ -23,19 +25,37 @@ def about_us(request):
   
 @login_required
 def profile(request):
-  return render(request, "profile.html")
+  movieList = Movie.objects.all()
+  userdata = QuizResults.objects.filter(user=request.user).first()
+  if userdata == None:
+    favGenre = "Faça o quiz para ter um gênero favorito!"
+  else:
+    favGenre = userdata.permaFavGenre
+  return render(request, "profile.html", {"Filmes":movieList, "GeneroFav":favGenre})
 
-@login_required
-def edit_profile(request):
-  return render(request, "edit-profile.html")
-  
+ 
 @login_required
 def amigos(request):
-  return render(request, "amigos.html")
+  amigos = Amigos.objects.all()
+  amigos_data = []
+  for amigo in amigos:
+    if detIfAmigo(QuizResults.objects.filter(user=request.user).first(), amigo) == 'match':
+      amigos_data.append({'amigo': amigo})
+  return render(request, 'amigos.html', {'Amigos':amigos, 'amigos_data':amigos_data})
   
 @login_required
 def movies(request):
-  return render(request, "movies.html")
+  activeuser=request.user
+  userdata=QuizResults.objects.filter(user=activeuser).first()
+  if userdata is None or userdata.permaFavGenre is None:
+    return redirect("quiz")
+  favGenre = userdata.permaFavGenre
+  movieList = QuizMovie.objects.filter(genre=favGenre)
+  random_movies = movieList.order_by('?')[:6]
+  random_movies2 = movieList.order_by('?')[:6]
+  return render(request, "movies.html", {"Filmes":random_movies,
+                                         "Filmes2":random_movies2,
+                                        "UserFav":favGenre})
   
 @login_required
 def quiz(request):
@@ -55,7 +75,8 @@ def quiz(request):
 
     i=quiz_res.pos
     movName = unratedMovies[i]['title']
-    
+    poster = QuizMovie.objects.filter(title=movName).first().poster
+    #print('ID = ', QuizMovie.objects.filter(title=movName).first().id)
     print('\nINDICE ', index)
     
     if index == 10:
@@ -73,6 +94,7 @@ def quiz(request):
     i = r.randint(0, len(unratedMovies)-1)
 
     movName = unratedMovies[i]['title']
+    poster = QuizMovie.objects.filter(title=movName).first().poster
 
     quiz_res = QuizResults.objects.filter(user=request.user).first()
     if not quiz_res:
@@ -88,14 +110,14 @@ def quiz(request):
       quiz_res.pos = i
       quiz_res.save()
       
-  return render(request, "quiz_fav.html", context = {"valorIndice":index,                                            "nomeFilme":movName})
+  return render(request, "quiz_fav.html", context = {"valorIndice":index,                                            "nomeFilme":movName, "poster":poster})
 
 def create_user(request):
   if request.method == "POST":
     user = User.objects.create_user(
       request.POST["username"],
       request.POST["email"], 
-      request.POST["password"]
+      request.POST["password"],
     )
     user.save()
     return redirect("landing page")
@@ -122,3 +144,4 @@ def login_user(request):
 def logout_user(request):
   logout(request)
   return redirect("landing page")
+

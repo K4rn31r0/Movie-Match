@@ -1,1 +1,76 @@
-<h1 style="text-align:center;">Seu Gênero Favorito: {{ Fav }}</h1>
+{% load static %}
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>MovieMatch - quiz_result</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Sail&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+
+
+
+</head>
+<div class="navbar">
+  <div class="logo-and-title">
+    <img src="{% static '/images/Logo.png' %}" class="logo-img">
+    <h1 class="Titulo-logo"><i>MovieMatch</i></h1>
+  </div>
+  <div class="textshadow">
+    <ul>
+      <li><a href="/home">Voltar</a></li>
+    </ul>
+  </div>
+</div>
+
+ <hr class="topdivider">
+
+<div style="background-color:#f2f2f0">
+<h1 style="text-align:center;" class="">Seu Gênero Favorito: {{ Fav }}</h1>
+<div  style="display: flex; flex-direction:column ;margin:0px 401px 0px 401px;text-align:justify; font-size:25px">
+{% if Fav == "Romance" %}
+  <img src="{% static '/images/genero/Romance.jpg' %}">
+    <p>O gênero de filme romance exerce um encanto irresistível ao explorar as facetas complexas e apaixonantes das relações humanas. Estas obras cinematográficas têm o poder de cativar o espectador ao contar histórias envolventes de amor e conexão, muitas vezes apresentando protagonistas cujas jornadas emocionais refletem experiências universalmente reconhecíveis. A magia do romance reside na capacidade de criar tensão emocional, suscitar suspiros e, em última análise, tocar o coração do público. Seja ambientado em cenários idílicos ou urbanos, o filme romance transporta os espectadores para universos onde o amor floresce, enfrentando desafios e triunfos. A química entre os personagens principais, aliada a diálogos poéticos e momentos de ternura, forma a espinha dorsal dessas narrativas, proporcionando uma experiência cinematográfica que celebra a beleza do amor em todas as suas formas. Assim, o filme romance não apenas entretém, mas também inspira a crença no poder transformador e duradouro das relações afetivas.</p>
+{% elif  Fav == "Drama" %}
+    <img src="{% static '/images/genero/Drama.png' %}">
+    <p>O gênero de filme drama se destaca pela sua capacidade única de explorar as complexidades emocionais e humanas, oferecendo narrativas que mergulham profundamente nas experiências cotidianas. Essas obras cinematográficas buscam retratar a vida de maneira autêntica, abordando temas universais como amor, perda, conflito e redenção. O drama muitas vezes se apoia em performances excepcionais de atores, que conseguem transmitir uma gama rica de emoções, tornando as histórias mais palpáveis e comoventes. A ausência de enredos fantasiosos permite que o espectador se conecte de forma íntima com os personagens, criando empatia e reflexão sobre os desafios da condição humana. Além disso, a cinematografia cuidadosa e a trilha sonora emotiva desempenham papéis cruciais na criação de atmosferas que intensificam o impacto emocional. O filme drama, ao proporcionar uma experiência que toca as fibras mais profundas da emoção, não apenas entretém, mas também convida o público a refletir sobre a complexidade e beleza inerentes à vida real.</p>
+{% elif  Fav == "Comédia" %}
+  <img src="{% static '/images/genero/Comedia.jpg' %}">
+  <p>O gênero de filme comédia oferece um refúgio alegre e bem-vindo, proporcionando ao público um escape humorístico das complexidades da vida cotidiana. Estas obras cinematográficas buscam arrancar risos através de situações engraçadas, diálogos espirituosos e personagens caricatos, explorando os aspectos mais leves e hilários da existência. O apelo da comédia reside na sua capacidade de provocar risadas universais, transcendentemente de culturas e experiências pessoais. Seja por meio de humor físico, sátira social ou simplesmente observações divertidas sobre a condição humana, o filme de comédia desempenha um papel crucial ao proporcionar entretenimento leve e otimismo contagioso. Ao criar um ambiente descontraído, as comédias não apenas buscam divertir, mas também estabelecem uma conexão emocional com o público, lembrando-nos da importância de rir diante das complexidades da vida. O gênero, com sua diversidade de estilos e abordagens, permanece como uma fonte valiosa de alegria e alívio cômico na paisagem cinematográfica.</p>
+{% elif  Fav == "Suspense" %}
+  <img src="{% static '/images/genero/Suspense.jpg' %}">
+  <p>O gênero de filme suspense é mestre em criar uma atmosfera carregada de tensão e expectativa, mantendo o público à beira do assento do início ao fim. Essas obras cinematográficas são habilidosas em manipular o desconhecido, criando enredos intrincados e cheios de reviravoltas que desafiam as expectativas. A principal essência do suspense reside na habilidade de manter o espectador em suspense, ansioso para descobrir o desfecho de uma trama misteriosa. Seja através de trilhas sonoras hipnotizantes, cinematografia sombria ou atuações intensas, o suspense busca envolver o público em uma experiência visceral e emocional. O elemento surpresa é muitas vezes a chave, mantendo o espectador em constante especulação e surpreendendo com revelações inesperadas. O gênero de suspense não apenas entretém, mas também instiga a mente, fazendo com que o público participe ativamente da resolução do mistério proposto pela trama, resultando em uma experiência cinematográfica envolvente e inesquecível.</p>
+{% elif  Fav == "Terror" %}
+  <img src="{% static '/images/genero/Terror.webp' %}">
+  <p>O gênero de filme terror tem o poder singular de explorar os recessos mais sombrios do imaginário humano, desencadeando medo e fascinação de maneiras intensas. Estas obras cinematográficas mergulham nas profundezas do desconhecido, evocando sensações de suspense, horror e sobrenatural. Por meio de narrativas envolventes e técnicas cinematográficas habilidosas, o terror busca provocar emoções visceralmente perturbadoras, desafiando as fronteiras entre o real e o sobrenatural. Elementos como jumpscares, trilhas sonoras atmosféricas e imagens impactantes são empregados para criar uma atmosfera de inquietação e desconforto. O terror não se limita apenas ao susto momentâneo; ele explora temores profundos e universais, refletindo ansiedades coletivas e individuais. Ao enfrentar nossos medos mais profundos de forma controlada, o filme de terror não apenas proporciona uma experiência emocionante, mas também oferece uma oportunidade para a catarse, permitindo que o público explore o lado mais obscuro da psique humana de maneira segura.</p>
+{% elif  Fav == "Aventura" %}
+  <img src="{% static '/images/genero/Aventura.jpg' %}">
+  <p>O gênero de filme aventura é uma jornada emocionante que transporta os espectadores para terras desconhecidas, explorando mundos imaginários ou desafiando fronteiras reais. Caracterizado por narrativas cheias de emoção, descobrimento e superação de obstáculos, o filme de aventura atrai o público com a promessa de escapismo e a busca por feitos extraordinários. Essas histórias frequentemente apresentam protagonistas corajosos, enfrentando perigos, desvendando mistérios e embarcando em jornadas épicas que testam suas habilidades e resiliência. A cinematografia nesse gênero muitas vezes destaca paisagens deslumbrantes e cenas de ação espetaculares, criando uma experiência visualmente impactante. Seja explorando selvas exóticas, enfrentando desafios sobrenaturais ou desbravando o desconhecido, o filme de aventura cativa pela promessa de emoções intensas e pela celebração da audácia humana diante do desconhecido. Este gênero, ao transportar o público para além dos limites convencionais, inspira um senso de maravilha e possibilita a fuga para mundos onde a aventura aguarda a cada esquina.</p>
+{% elif  Fav == "Sci-Fi" %}
+  <img src="{% static '/images/genero/Sci-fi.webp' %}">
+  <p>O gênero de filme de ficção científica, ou sci-fi, é um terreno fértil para a exploração de conceitos futuristas, avanços tecnológicos e possibilidades além da compreensão humana. Caracterizado por narrativas que desafiam as fronteiras da realidade, o sci-fi cativa o público ao transportá-lo para universos distantes, onde a imaginação é a única limitação. Essas obras frequentemente contemplam questões filosóficas e éticas, enquanto apresentam tecnologias avançadas, civilizações extraterrestres e visões alternativas do futuro. Através de tramas envolventes e efeitos visuais inovadores, o gênero sci-fi estimula a reflexão sobre o impacto da tecnologia na sociedade, a natureza da existência e as possibilidades infinitas do cosmos. Além disso, o sci-fi muitas vezes serve como um espelho especulativo, antecipando e explorando dilemas éticos que podem surgir com o progresso científico. Em última análise, o filme de ficção científica oferece uma jornada intelectual e visual única, desafiando as fronteiras da compreensão e inspirando a contemplação do desconhecido.</p>
+{% elif  Fav == "Ação" %}
+  <img src="{% static '/images/genero/Ação.jpeg' %}">
+  <p>O gênero de filme de ação exerce um fascínio irresistível, oferecendo uma experiência cinematográfica repleta de adrenalina e emoção. A ação, muitas vezes, é a manifestação visual e auditiva da narrativa, proporcionando sequências intensas de combates, perseguições e reviravoltas que mantêm os espectadores à beira de seus assentos. A atração pelo gênero reside na habilidade de transportar o público para mundos repletos de desafios épicos e personagens destemidos, onde a resiliência e a coragem são postas à prova. As tramas muitas vezes envolvem heróis carismáticos enfrentando adversidades impossíveis, o que cria uma catarse única para quem assiste. Além disso, a cinematografia vibrante e a trilha sonora pulsante contribuem para a imersão total, fazendo do filme de ação um gênero envolvente e inesquecível.</p>
+{% elif  Fav == "Mistério" %}
+  <img src="{% static '/images/genero/Misterio.jpg' %}">
+  <p>O gênero de filme mistério exerce um magnetismo peculiar sobre o público, mergulhando-o em tramas enigmáticas e intrincadas que desafiam a mente e a lógica. A atração reside na habilidade de criar narrativas repletas de suspense, reviravoltas inesperadas e mistérios que mantêm os espectadores envolvidos até o desfecho final. A busca pela verdade, muitas vezes conduzida por detetives astutos ou protagonistas curiosos, instiga a imaginação e estimula o raciocínio, criando uma experiência cinematográfica única. A atmosfera carregada de tensão, aliada à revelação gradual de pistas e segredos, contribui para a construção de um quebra-cabeça cinematográfico cativante. No gênero de mistério, o espectador se torna um participante ativo, tentando decifrar enigmas junto com os personagens, criando uma conexão emocional e intelectual com a trama. Essa dinâmica desafiadora e imprevisível faz do filme mistério uma escolha intrigante para quem busca uma experiência cinematográfica que vai além do entretenimento superficial, envolvendo o espectador em um jogo intelectual envolvente.</p>
+{% elif  Fav == "Biografia" %}
+  <img src="{% static '/images/genero/Biografia.webp' %}">
+  <p>O gênero de filme biografia oferece uma janela fascinante para a vida de indivíduos notáveis, permitindo que o público mergulhe nas complexidades e realizações de figuras reais. Esses filmes transcendem a ficção, oferecendo retratos autênticos de personalidades que moldaram o curso da história, das artes, da ciência ou de outras esferas da sociedade. A atração reside na oportunidade de conhecer os triunfos e desafios enfrentados por pessoas reais, cujas vidas muitas vezes ecoam lições universais de perseverança, superação e, por vezes, tragédia. A narrativa biográfica busca capturar a essência do protagonista, explorando não apenas eventos marcantes, mas também as motivações, relações e transformações que moldaram sua jornada. Além disso, a escolha cuidadosa de atores e a atenção aos detalhes históricos contribuem para a autenticidade dessas obras, proporcionando ao público uma experiência cinematográfica educativa e emocionalmente envolvente. Assim, o filme biografia não apenas presta homenagem a indivíduos notáveis, mas também inspira reflexão sobre a complexidade da condição humana e o impacto duradouro das vidas extraordinárias.</p>
+{% elif  Fav == "Animação" %}
+  <img src="{% static '/images/genero/Animacao.jpg' %}">
+  <p>A animação é uma janela mágica para a expressão artística, transportando o público para mundos imaginários e personagens encantadores. Esses filmes oferecem narrativas vibrantes e visualmente deslumbrantes, explorando aventuras épicas, histórias emocionantes e enredos engraçados. Com personagens que personificam qualidades humanas, a animação desperta a imaginação, apresentando desafios extraordinários.Dessa forma, a animação não apenas entretém, mas também inspira reflexão sobre a riqueza da imaginação humana. Ao explorar a complexidade da condição humana através de personagens animados, esses filmes deixam uma marca duradoura, proporcionando momentos de alegria e reflexão.</p>
+  
+{% else%}
+  <p> sem Dados </p>
+{% endif %}
+</div>
+
+<ul>
+  <li><a href="/home">Voltar</a></li>
+</ul>
+
+</div>

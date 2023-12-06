@@ -1,4 +1,20 @@
-<form method="post">
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>MovieMatch - login </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Sail&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static '/login.css' %}">
+  </head>
+
+
+<body style="background-color: #E2CFEA">
+<form method="post" class="login-form">
   {% csrf_token %}
   <div>
     <label>Nome de Usuário:</label>
@@ -13,3 +29,4 @@
   <br>
   <span style="color: red">{{ error_msg }}</span>
 </form>
+  </body>

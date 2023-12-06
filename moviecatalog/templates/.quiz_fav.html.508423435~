@@ -25,19 +25,13 @@
   <input type="submit" value="OK!">
 </form>
 </div>
-<div style="display: flex;
-  align-items: center;">
-  <div >
-    <img src="{{poster.url}}" style="width: 200px; height: auto;">
-  </div>
-  <div style="margin-left:20px">
-    <h2>0 - Não assisti</h2>
-    <h2>1 - Muito ruim</h2> 
-    <h2>2 - Ruim</h2>
-    <h2>3 - Mediano</h2>
-    <h2>4 - Bom</h2>
-    <h2>5 - Muito bom</h2>
-    <h2>6 - Excelente</h2>
-  </div>
-</div>
+<div style="align-items:center">
+<h2>0 - Não assisti</h2>
+<h2>1 - Muito ruim</h2> 
+<h2>2 - Ruim</h2>
+<h2>3 - Mediano</h2>
+<h2>4 - Bom</h2>
+<h2>5 - Muito bom</h2>
+<h2>6 - Excelente</h2>
+<img src="{{ poster.url }}">
 </body>

@@ -1,0 +1,12 @@
+.amigosgallery {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.amigosgallery img {
+  width: 50px;
+  height: 50px;
+  background-color: #E2CFEA;
+  border-radius: 50%;
+}
+

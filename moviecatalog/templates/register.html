@@ -1,6 +1,26 @@
-<h1>{{ action }} Usuário</h1>
+{% load static %}
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>MovieMatch - sign up </title>
 
-<form method="post">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Sail&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static '/login.css' %}">
+  </head>
+
+
+    
+
+
+<body style="background-color: #E2CFEA">
+<div style="display: flex; flex-direction:column; align-content:center">
+
+  <h1>{{ action }} Usuário</h1>
+
+<form method="post" class="registration-form">
   {% csrf_token %}
   <div>
     <label>Nome de Usuário:</label>
@@ -17,3 +37,5 @@
 
   <input type="submit" value="Registrar">
 </form>
+</div>
+</body>
