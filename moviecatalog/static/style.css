@@ -146,8 +146,8 @@ hr.topdivider {
 }
 
 .moviegallery h3 {
-  text-align: left;
-  color:black
+  text-align: center;
+  color:#6247aa
 }
 
 .moviegallery h4 {
@@ -182,4 +182,3 @@ hr.topdivider {
 th, td {
   border-bottom: 3px solid #6247aa;
 }
-

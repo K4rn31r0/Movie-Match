@@ -74,9 +74,9 @@
       <div class="moviegallery">
 
         {% for movie in Filmes %}
-        <div>
+        <div style="text-align: center;">
           <img src="{{ movie.poster.url }}">
-          <h3>{{ movie.name }}</h3>
+          <h3>{{ movie.title }}</h3>
           <p><b>Diretor: </b>{{ movie.director }}</p>
           <p><b>Gênero: </b>{{ movie.genre }}</p>
         </div>

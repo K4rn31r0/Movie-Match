@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Movie, QuizMovie, QuizResults, Amigos, UserProfile
+from .forms import EditProfileForm
 from .scripts.quiz_genero import avaliaFilme, detGenFav, detIfAmigo, detFilme
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
+from django.db import IntegrityError
+from django.core.files.storage import default_storage
 import random as r
 
 
@@ -27,13 +30,49 @@ def about_us(request):
 def profile(request):
   movieList = Movie.objects.all()
   userdata = QuizResults.objects.filter(user=request.user).first()
-  if userdata == None:
+  profileinfo = UserProfile.objects.filter(name=request.user).first()
+  userpic = profileinfo.pic
+  bio = profileinfo.bio
+  if userdata == None or userdata.permaFavGenre == None:
     favGenre = "Faça o quiz para ter um gênero favorito!"
   else:
     favGenre = userdata.permaFavGenre
-  return render(request, "profile.html", {"Filmes":movieList, "GeneroFav":favGenre})
+  return render(request, "profile.html", {"Filmes":movieList, "GeneroFav":favGenre, "Pfpic":userpic, "Bio": bio})
 
- 
+def deletaFotoPerfil(path):
+  default_storage.delete(path)
+  return
+
+@login_required
+def editProfile(request):
+  user = UserProfile.objects.filter(name=request.user).first()
+  
+  if request.method == "POST":
+    form = EditProfileForm(request.POST, request.FILES)
+    
+    if form.is_valid():
+      oldpic = user.pic.path
+      user.bio = request.POST['bio']
+      
+      if 'pic' in request.FILES:
+        if user.pic.name != 'images/defaultpfp.png':
+          user.pic.delete(save=False)
+          
+        user.pic = request.FILES['pic']
+        
+      user.save()
+
+      if oldpic and oldpic != user.pic.path:
+        deletaFotoPerfil(oldpic)
+        
+      return redirect("profile")   
+      
+  else:
+    form = EditProfileForm(initial={'bio':user.bio})
+    
+  return render(request, 'editprofile.html', context={"form":form})
+
+  
 @login_required
 def amigos(request):
   amigos = Amigos.objects.all()
@@ -114,13 +153,22 @@ def quiz(request):
 
 def create_user(request):
   if request.method == "POST":
-    user = User.objects.create_user(
-      request.POST["username"],
-      request.POST["email"], 
-      request.POST["password"],
-    )
-    user.save()
-    return redirect("landing page")
+    try:
+      user = User.objects.create_user(
+        request.POST["username"],
+        request.POST["email"], 
+        request.POST["password"],
+      )
+      user.save()
+      userprofile = UserProfile.objects.create(
+        name = request.POST["username"],
+        email = user.email
+      )
+      userprofile.save()
+      return redirect("landing page")
+    except IntegrityError:
+      erro = 'ERRO: Usuário já existe!'
+      return render(request, "register.html", context={"action": "Adicionar", "ErrorMsg":erro})
   return render(request, "register.html", context={"action": "Adicionar"})
 
 def login_user(request):

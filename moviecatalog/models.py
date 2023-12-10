@@ -32,6 +32,6 @@ class Amigos (models.Model):
 class UserProfile(models.Model):
   name = models.CharField(max_length=25, default="Name")
   email = models.EmailField(unique=True, default="email@gmail.com")
-  bio = models.TextField(blank=True, null=True)
+  bio = models.TextField(default='Olá, estou usando o MovieMatch!', null=True)
   pic = models.ImageField(upload_to="images/", default="images/defaultpfp.png", null=True)
-  generofav = models.CharField(max_length=50, default=QuizResults.permaFavGenre, null=True)
+  generofav = models.CharField(max_length=50, null=True, blank=True)

@@ -8,6 +8,12 @@
   <meta name="viewport" content="width=device-width">
   <title>MovieMatch - Perfil</title>
 
+  <script>
+    function redirectToEdit() {
+      window.location.href = 'profile/editprofile';
+    }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mooli&family=Sail&display=swap" rel="stylesheet">
@@ -43,7 +49,7 @@
     <div style="display: flex; flex-direction:column ;margin:0px 201px 0px 201px">
 
       <div class="profile-pic">
-        <img src= "{% static '/images/placeholder.png' %}" style="border-radius:50%">
+        <img src= "{{ Pfpic.url }}" style="border-radius:50%">
       </div>
       
       <div>
@@ -53,7 +59,7 @@
         </h4>
       </div>
     
-        <p contenteditable="true">Clique para inserir uma biografia </p>
+        <p>{{ Bio }} </p>
       
       <table style=text-align:center;>
         <tr>
@@ -67,7 +73,7 @@
           <td>{{ GeneroFav }}</td>
         </tr>
       </table>
-
+      <button type=button onclick="redirectToEdit()">EDITAR PERFIL</button>
       <h4>
         <a href="/users/logout">Sair</a>
       </h4>
@@ -79,7 +85,7 @@
       <div class="moviegallery">
 
       {% for movie in Filmes %}
-      <div>
+      <div style="text-align: center;">
         <img src="{{ movie.poster.url }}">
         <h3>{{ movie.name }}</h3>
         <p><b>Estreia: </b>{{ movie.releaseDate }}</p>
