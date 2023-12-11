@@ -100,7 +100,7 @@ def detGenFav (dicNotaUser):
 #algoritmo amigos
 
 def detIfAmigo (QuizResults, Amigo):
-  if QuizResults.permaFavGenre == Amigo.generofav:
+  if QuizResults.generofav == Amigo.generofav:
         #pct = detPctSemelhanca(dicNotaUser, dicNotaUser2)
         return 'match'
     #not a match

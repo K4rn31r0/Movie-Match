@@ -50,17 +50,17 @@
 <div class="amigosgallery" style="display: flex;">
   {% if amigos_data %}
     {% for data in amigos_data %}
-    <div>
-    <img src="{{ data.amigo.pic.url }}" style=margin-left:40px>
+    <div style="text-align: center;">
+    <img src="{{ data.amigo.pic.url }}">
         <div>
-        <h4 style=text-align:center>{{ data.amigo.name }}</h4>
-        <p>@{{ data.amigo.username }}</p>
+        <h4>@{{ data.amigo.name }}</h4>
         <p><b>Gênero Favorito: </b>{{ data.amigo.generofav }}</p>
+        <p><b>Bio: </b>{{ data.amigo.bio }}</p>
         </div>
     </div>
     {% endfor %}
   {% else %}
-  <p>No amigos data available for {{ request.user.username }}.</p>
+  <p><b>QUE SILÊNCIO...</b>  Ainda não há outros usuários com gostos iguais aos seus!</p>
   {% endif %}
 </div>
 

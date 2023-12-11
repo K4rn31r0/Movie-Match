@@ -40,15 +40,15 @@
   <div class="mainbody">
     <div style="display: flex; flex-direction:column ;margin:0px 201px 0px 201px; class="about-us">
       <h2><b>Filmes</b></h2>
-      <h3 style=color:black>
+      <h3>
         Principais recomendações de filmes para @{{request.user.username}}
       </h3>
         <div class="moviegallery" style=align-items:center>
         {% for movie in Filmes %}
-        <div>
+        <div style="text-align: center;">
           {% if movie.poster %}
           <div>
-            <h4 style=text-align:center>{{ movie.title }}</h4>
+            <h4>{{ movie.title }}</h4>
           </div>
           <img src="{{movie.poster.url}}">
           <p><b>Diretor: </b>{{ movie.director }}</p>
@@ -66,13 +66,13 @@
 
   <div style="display: flex; flex-direction:column ;margin:0px 201px 0px 201px; class="about-us">
     <div>
-        <h3 style=color:black>
+        <h3>
           Recomendações de filmes de {{ UserFav }} para @{{request.user.username}}
         </h3>
     </div>
             <div class="moviegallery">
             {% for movie in Filmes2 %}
-            <div>
+            <div style="text-align: center;">
               {% if movie.poster %}
               <div>
                 <h4 style=text-align:center>{{ movie.title }}</h4>

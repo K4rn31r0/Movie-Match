@@ -12,8 +12,6 @@ import random as r
 
 def landing_page(request):
   movies = QuizMovie.objects.all()
-  for obj in movies:
-    print(obj.title, ' - ' ,obj.genre)
   return render(request, "landingpage.html")
   
 @login_required
@@ -37,7 +35,13 @@ def profile(request):
     favGenre = "Faça o quiz para ter um gênero favorito!"
   else:
     favGenre = userdata.permaFavGenre
-  return render(request, "profile.html", {"Filmes":movieList, "GeneroFav":favGenre, "Pfpic":userpic, "Bio": bio})
+  amigos = UserProfile.objects.exclude(name=request.user)
+  amigos_data = []
+  for amigo in amigos:
+    if detIfAmigo(profileinfo, amigo) == 'match':
+      amigos_data.append({'amigo': amigo})
+  num_amigos = len(amigos_data)
+  return render(request, "profile.html", {"Filmes":movieList, "GeneroFav":favGenre, "Pfpic":userpic, "Bio": bio, "QuantAmigos":num_amigos})
 
 def deletaFotoPerfil(path):
   default_storage.delete(path)
@@ -75,10 +79,13 @@ def editProfile(request):
   
 @login_required
 def amigos(request):
-  amigos = Amigos.objects.all()
+  userdata = UserProfile.objects.filter(name=request.user).first()
+  if userdata.generofav is None:
+    return redirect("quiz")
+  amigos = UserProfile.objects.exclude(name=request.user)
   amigos_data = []
   for amigo in amigos:
-    if detIfAmigo(QuizResults.objects.filter(user=request.user).first(), amigo) == 'match':
+    if detIfAmigo(userdata, amigo) == 'match':
       amigos_data.append({'amigo': amigo})
   return render(request, 'amigos.html', {'Amigos':amigos, 'amigos_data':amigos_data})
   
@@ -120,8 +127,11 @@ def quiz(request):
     
     if index == 10:
       fav = detGenFav(quiz_res.dictAnswers)
+      profileinfo = UserProfile.objects.filter(name=request.user).first()
       quiz_res.permaFavGenre = fav
+      profileinfo.generofav = fav
       quiz_res.save()
+      profileinfo.save()
       return render(request, "quiz_fav_result.html", context={"Fav":fav})
       
     index+=1
